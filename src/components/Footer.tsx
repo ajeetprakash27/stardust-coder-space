@@ -2,31 +2,27 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Github, Linkedin, Heart } from 'lucide-react';
-
 gsap.registerPlugin(ScrollTrigger);
-
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
     const footer = footerRef.current;
-
     if (footer) {
       // Footer slide-up animation
-      gsap.fromTo(footer,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: footer,
-            start: "top 90%",
-            toggleActions: "play none none reverse"
-          }
+      gsap.fromTo(footer, {
+        y: 60,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footer,
+          start: "top 90%",
+          toggleActions: "play none none reverse"
         }
-      );
+      });
 
       // Floating particles animation
       gsap.to('.footer-particle', {
@@ -52,7 +48,6 @@ const Footer = () => {
             ease: "back.out(1.7)"
           });
         });
-
         icon.addEventListener('mouseleave', () => {
           gsap.to(icon, {
             scale: 1,
@@ -64,23 +59,21 @@ const Footer = () => {
       });
     }
   }, []);
-
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <footer 
-      ref={footerRef}
-      className="relative py-16 bg-background-secondary overflow-hidden"
-    >
+  return <footer ref={footerRef} className="relative py-16 bg-background-secondary overflow-hidden">
       {/* Floating Background Particles */}
       <div className="absolute inset-0">
         <div className="footer-particle floating-orb w-16 h-16 top-1/4 left-1/6 bg-gradient-primary opacity-10"></div>
@@ -93,13 +86,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Brand */}
           <div className="text-center md:text-left">
-            <button
-              onClick={scrollToTop}
-              className="text-3xl font-bold mb-2 hover:scale-105 transition-transform duration-300"
-            >
-              <span className="bg-gradient-cyber bg-clip-text text-transparent">
-                MiladiCode
-              </span>
+            <button onClick={scrollToTop} className="text-3xl font-bold mb-2 hover:scale-105 transition-transform duration-300">
+              <span className="bg-gradient-cyber bg-clip-text text-transparent">Ajeet Prakash Pandey</span>
             </button>
             <p className="text-muted-foreground text-sm">
               Creative Developer & Digital Artist
@@ -109,35 +97,19 @@ const Footer = () => {
           {/* Navigation Links */}
           <div className="text-center">
             <nav className="flex flex-wrap justify-center space-x-8 mb-4">
-              {['about', 'projects', 'contact'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300 capitalize text-sm font-medium"
-                >
+              {['about', 'projects', 'contact'].map(item => <button key={item} onClick={() => scrollToSection(item)} className="text-muted-foreground hover:text-primary transition-colors duration-300 capitalize text-sm font-medium">
                   {item}
-                </button>
-              ))}
+                </button>)}
             </nav>
           </div>
 
           {/* Social Links */}
           <div className="text-center md:text-right">
             <div className="flex justify-center md:justify-end space-x-4 mb-4">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social p-3 glass rounded-lg hover:bg-primary/10 transition-colors duration-300"
-              >
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="footer-social p-3 glass rounded-lg hover:bg-primary/10 transition-colors duration-300">
                 <Github size={20} className="text-muted-foreground hover:text-primary transition-colors" />
               </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social p-3 glass rounded-lg hover:bg-primary/10 transition-colors duration-300"
-              >
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social p-3 glass rounded-lg hover:bg-primary/10 transition-colors duration-300">
                 <Linkedin size={20} className="text-muted-foreground hover:text-primary transition-colors" />
               </a>
             </div>
@@ -150,14 +122,12 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-muted-foreground text-sm flex items-center justify-center space-x-2">
-            <span>&copy; 2024 MiladiCode. Made with</span>
+            <span>© 2024 Ajeet. Made with</span>
             <Heart size={16} className="text-red-500 animate-pulse" />
             <span>and lots of caffeine ☕</span>
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
