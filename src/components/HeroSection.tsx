@@ -106,7 +106,7 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div ref={headlineRef} className="mb-6">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4">
-            Hi, I'm <span className="bg-gradient-cyber bg-clip-text text-transparent">Ajeet Prakash P</span>
+            Hi, I'm <span className="bg-gradient-cyber bg-clip-text text-transparent">Ajeet Pandey</span>
           </h1>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-muted-foreground">
             Web Developer
